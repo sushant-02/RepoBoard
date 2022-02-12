@@ -1,0 +1,32 @@
+.header--container {
+  background-color: #25292f;
+  color: #fff;
+  width: 100%;
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header--logo {
+  font-size: 1.6rem;
+}
+
+.btn--home {
+  background-color: white;
+  color: #25292f;
+  /* padding: 0.45rem 1.3rem; */
+  /* border-radius: 5px; */
+}
+
+@media only screen and (max-width: 1024px) {
+  .header--container {
+    padding: 0 1rem;
+  }
+}
