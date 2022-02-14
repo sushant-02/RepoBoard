@@ -1,22 +1,29 @@
+<app-header></app-header>
 <div class="landing--container">
   <div class="container landing">
     <div class="landing--card">
       <div class="content">
-        <h2>RepoBoard is a github repository listing application</h2>
-        <p>
+        <h2>RepoBoard: Github Repositories Listing Application</h2>
+        <!-- <p>
           Please enter a valid github username below to list all the public
           repositories of that user.
-        </p>
+        </p> -->
+        <!-- <h2>Please enter a valid github username</h2> -->
       </div>
-      <form class="form-control">
+      <form ngNativeValidate (ngSubmit)="onSubmit()">
         <div class="field">
+          <label for="username" class="label">
+            Please enter a valid github username
+          </label>
           <div class="control has-icons-left">
             <input
               class="input"
               type="text"
               id="username"
               name="username"
+              [(ngModel)]="username"
               placeholder="Enter Username"
+              required
             />
             <span class="icon is-small is-left">
               <fa-icon [icon]="faUser"></fa-icon>
@@ -24,7 +31,13 @@
           </div>
         </div>
         <div class="control">
-          <button class="button btn--submit">Search</button>
+          <button
+            type="submit"
+            [ngClass]="{ 'is-loading': isLoading }"
+            class="button btn--submit"
+          >
+            Search
+          </button>
         </div>
       </form>
     </div>

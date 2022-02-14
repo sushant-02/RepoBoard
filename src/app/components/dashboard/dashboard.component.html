@@ -1,0 +1,54 @@
+<app-header></app-header>
+<!-- *ngIf="userInfo != null"  -->
+<div *ngIf="userInfo != null" class="dashboard--container">
+  <div class="dashboard container">
+    <div class="columns inner--container">
+      <div class="profile--container">
+        <div class="profile--container-inner">
+          <figure class="image img--container">
+            <img class="is-rounded img" [src]="userInfo.avatar_url" />
+          </figure>
+          <div class="profile--name-username mt-4 mb-4">
+            <h1 class="title is-size-4">{{ userInfo.name }}</h1>
+            <h2 class="subtitle is-size-6 text-truncate has-text-grey">
+              <span class="icon">
+                <fa-icon [icon]="faLink"></fa-icon>
+              </span>
+              {{ userInfo.html_url }}
+            </h2>
+          </div>
+          <div *ngIf="userInfo.bio" class="mb-3">
+            <p class="is-size-6">{{ userInfo.bio }}</p>
+          </div>
+          <div *ngIf="!userInfo.bio" class="mb-3">
+            <p class="is-size-6 has-text-grey">User has no bio</p>
+          </div>
+          <div class="icon--container">
+            <span class="icon-text">
+              <span class="icon">
+                <fa-icon [icon]="faUserFriends"></fa-icon>
+              </span>
+              <span>
+                {{ userInfo.followers }} Followers &#183;
+                {{ userInfo.following }} Following
+              </span>
+            </span>
+            <span *ngIf="userInfo.location" class="icon-text">
+              <span class="icon">
+                <fa-icon [icon]="faMapMarkerAlt"></fa-icon>
+              </span>
+              <span>{{ userInfo.location }}</span>
+            </span>
+            <span *ngIf="userInfo.twitter_username" class="icon-text">
+              <span class="icon">
+                <fa-icon [icon]="faTwitter"></fa-icon>
+              </span>
+              <span>{{ userInfo.twitter_username }}</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="column">Repositories</div>
+    </div>
+  </div>
+</div>

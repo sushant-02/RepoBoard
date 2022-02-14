@@ -1,0 +1,4 @@
+[build]
+  publish = "dist/repo-board"
+  command = "ng build --prod"
+  functions = "./.netlify/functions"

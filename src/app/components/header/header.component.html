@@ -3,7 +3,12 @@
     <a>
       <h1 class="header--logo is-unselectable">RepoBoard</h1>
     </a>
-    <!-- <a class="btn--home is-unselectable">Home</a> -->
-    <button class="button btn--home is-unselectable">Button</button>
+    <button
+      *ngIf="hasRoute('/dashboard')"
+      class="button btn--home is-unselectable"
+      (click)="onClick()"
+    >
+      Home
+    </button>
   </div>
 </div>
