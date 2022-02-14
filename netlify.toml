@@ -2,3 +2,7 @@
   publish = "dist/repo-board"
   command = "ng build --prod"
   functions = "./.netlify/functions"
+[[redirects]]
+  from = "/*"
+  to = "/index.html"[build]
+  status = 200
