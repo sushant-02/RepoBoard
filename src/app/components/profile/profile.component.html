@@ -1,0 +1,51 @@
+<div class="profile--container">
+  <div class="profile--container-inner">
+    <figure class="image img--container">
+      <img class="is-rounded img" [src]="user.avatar_url" />
+    </figure>
+    <div class="profile--name-username mt-4 mb-4">
+      <h1 class="title is-size-4">{{ user.name }}</h1>
+      <h2 class="subtitle is-size-6 text-truncate">
+        <a
+          target="_blank"
+          rel="=noopener noreferrer"
+          href="{{ user.html_url }}"
+          class="is-size-6 has-text-grey"
+        >
+          <span class="icon">
+            <fa-icon [icon]="faLink"></fa-icon>
+          </span>
+          {{ user.html_url }}
+        </a>
+      </h2>
+    </div>
+    <div *ngIf="user.bio" class="mb-3">
+      <p class="is-size-6">{{ user.bio }}</p>
+    </div>
+    <div *ngIf="!user.bio" class="mb-3">
+      <p class="is-size-6 has-text-grey">User has no bio</p>
+    </div>
+    <div class="icon--container">
+      <span class="icon-text">
+        <span class="icon">
+          <fa-icon [icon]="faUserFriends"></fa-icon>
+        </span>
+        <span>
+          {{ user.followers }} Followers &#183; {{ user.following }} Following
+        </span>
+      </span>
+      <span *ngIf="user.location" class="icon-text">
+        <span class="icon">
+          <fa-icon [icon]="faMapMarkerAlt"></fa-icon>
+        </span>
+        <span>{{ user.location }}</span>
+      </span>
+      <span *ngIf="user.twitter_username" class="icon-text">
+        <span class="icon">
+          <fa-icon [icon]="faTwitter"></fa-icon>
+        </span>
+        <span>{{ user.twitter_username }}</span>
+      </span>
+    </div>
+  </div>
+</div>

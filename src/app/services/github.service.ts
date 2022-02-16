@@ -11,16 +11,36 @@ export class GithubService {
 
   constructor(private http: HttpClient) {}
 
-  getUser(username: string): Observable<any> {
-    const res = this.http.post(`${this.baseURL}/getUser`, { username });
-    return res;
-  }
-
   getUserInfo() {
     return this.userInfo;
   }
 
   setUserInfo(user: any) {
     this.userInfo = user;
+  }
+
+  getUser(username: string): Observable<any> {
+    const res = this.http.post(`${this.baseURL}/getUser`, { username });
+    return res;
+  }
+
+  getAllRepos(
+    username: string,
+    direction: string,
+    per_page: number,
+    page: number
+  ): Observable<any> {
+    const res = this.http.post(`${this.baseURL}/getRepos`, {
+      username,
+      direction,
+      per_page,
+      page,
+    });
+    return res;
+  }
+
+  getLanguages(url: string): Observable<any> {
+    const res = this.http.post(`${this.baseURL}/getLanguages`, { url });
+    return res;
   }
 }

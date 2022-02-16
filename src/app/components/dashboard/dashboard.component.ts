@@ -1,11 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  faMapMarkerAlt,
-  faUserFriends,
-  faLink,
-} from '@fortawesome/free-solid-svg-icons';
-import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { GithubService } from '../../services/github.service';
 
 @Component({
@@ -15,10 +9,6 @@ import { GithubService } from '../../services/github.service';
 })
 export class DashboardComponent implements OnInit {
   userInfo: any = null;
-  faUserFriends = faUserFriends;
-  faMapMarkerAlt = faMapMarkerAlt;
-  faTwitter = faTwitter;
-  faLink = faLink;
 
   constructor(private githubService: GithubService, private router: Router) {}
 
@@ -27,6 +17,7 @@ export class DashboardComponent implements OnInit {
 
     if (this.userInfo === null) {
       this.router.navigateByUrl('/');
+      return;
     }
   }
 }

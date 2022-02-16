@@ -1,0 +1,29 @@
+<div>
+  <div class="card">
+    <div class="card-content">
+      <div class="content">
+        <h3 class="title is-4">
+          <a
+            target="_blank"
+            rel="=noopener noreferrer"
+            href="{{ repo.html_url }}"
+            class="has-text-dark"
+          >
+            {{ repo.name }}
+          </a>
+        </h3>
+        <p *ngIf="repo.description" class="">
+          {{ repo.description }}
+        </p>
+        <p *ngIf="!repo.description" class="has-text-grey">
+          This repository has no description
+        </p>
+      </div>
+      <div *ngIf="tags" class="container columns is-multiline mx-1 is-centered">
+        <span *ngFor="let tag of tags" class="tag is-success mx-1 mb-1">
+          {{ tag }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

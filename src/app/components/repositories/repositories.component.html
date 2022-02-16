@@ -1,0 +1,38 @@
+<div class="repositories--container">
+  <div class="columns">
+    <div class="field column has-addons is-flex">
+      <div class="control has-icons-left is-flex-grow-1">
+        <input class="input" type="text" placeholder="Search Repositories" />
+        <span class="icon is-small is-left">
+          <fa-icon [icon]="faSearch"></fa-icon>
+        </span>
+      </div>
+      <div class="control">
+        <button class="button btn--submit">Search</button>
+      </div>
+    </div>
+    <div class="field column is-narrow">
+      <div class="control">
+        <div class="select">
+          <select
+            name="perPage"
+            id="perPage"
+            [ngModel]="perPage"
+            (ngModelChange)="onPerPageChange($event)"
+          >
+            <option [value]="10" [defaultSelected]>10 per page</option>
+            <option [value]="50">50 per page</option>
+            <option [value]="100">100 per page</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="repos.length != 0" class="columns is-3 is-multiline is-desktop">
+    <app-repo-detail
+      *ngFor="let repo of repos"
+      [repo]="repo"
+      class="column is-6-desktop is-full-tablet"
+    ></app-repo-detail>
+  </div>
+</div>
