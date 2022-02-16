@@ -1,14 +1,7 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { GithubService } from '../../services/github.service';
-
-interface Repos {
-  id: number;
-  name: string;
-  description: string;
-  html_url: string;
-  languages_url: string;
-}
+import { Repos } from '../../../types';
 
 @Component({
   selector: 'app-repositories',

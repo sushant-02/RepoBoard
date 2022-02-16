@@ -25,6 +25,9 @@
             </span>
           </div>
         </div>
+        <p *ngIf="errorMessage" class="has-text-danger mb-3">
+          {{ errorMessage }}
+        </p>
         <div class="control">
           <button
             type="submit"

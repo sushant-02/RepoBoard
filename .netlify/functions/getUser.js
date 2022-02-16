@@ -20,7 +20,7 @@ exports.handler = async (event, context) => {
       console.log(error.response);
       return {
         statusCode: 500,
-        body: JSON.stringify({ error: "Internal Server Error" }),
+        body: JSON.stringify({ message: "User not found" }),
       };
     }
   }

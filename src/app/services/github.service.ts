@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { catchError, Observable, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -19,8 +19,14 @@ export class GithubService {
     this.userInfo = user;
   }
 
+  handleError(error: HttpErrorResponse) {
+    return throwError(error);
+  }
+
   getUser(username: string): Observable<any> {
-    const res = this.http.post(`${this.baseURL}/getUser`, { username });
+    const res = this.http
+      .post(`${this.baseURL}/getUser`, { username })
+      .pipe(catchError(this.handleError));
     return res;
   }
 

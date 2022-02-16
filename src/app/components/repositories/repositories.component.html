@@ -36,12 +36,16 @@
       </div>
     </div>
   </div>
+
+  <!-- Show loader while fetching repos -->
   <div *ngIf="isReposLoading" class="columns is-multiline is-desktop">
     <app-loader
       *ngFor="let item of loaderArray"
       class="column is-6-desktop is-full-tablet"
     ></app-loader>
   </div>
+
+  <!-- Display repos -->
   <div
     *ngIf="!isReposLoading && repos.length"
     class="columns is-multiline is-desktop"
@@ -51,5 +55,25 @@
       [repo]="repo"
       class="column is-6-desktop is-full-tablet"
     ></app-repo-detail>
+  </div>
+
+  <!-- If user has no repos matching searchTerm -->
+  <div
+    *ngIf="!isReposLoading && !repos.length && searchTerm"
+    class="columns is-multiline is-desktop"
+  >
+    <div class="container has-text-centered pt-5">
+      <h3 class="has-color-grey">No such repository exist</h3>
+    </div>
+  </div>
+
+  <!-- If user has no repos -->
+  <div
+    *ngIf="!isReposLoading && !repos.length && !searchTerm"
+    class="columns is-multiline is-desktop"
+  >
+    <div class="container has-text-centered pt-5">
+      <h3 class="has-color-grey">No public repositories to show</h3>
+    </div>
   </div>
 </div>
