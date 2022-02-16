@@ -21,7 +21,6 @@ exports.handler = async (event, context) => {
       params,
       ...config,
     });
-    // console.log(res);
     return {
       statusCode: 200,
       body: JSON.stringify({ data: res.data }),

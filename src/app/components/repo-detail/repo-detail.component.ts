@@ -1,13 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GithubService } from '../../services/github.service';
-
-interface Repos {
-  id: number;
-  name: string;
-  description: string;
-  html_url: string;
-  languages_url: string;
-}
+import { Repos } from '../../../types';
 
 @Component({
   selector: 'app-repo-detail',

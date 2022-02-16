@@ -14,6 +14,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { ProfileComponent } from './components/profile/profile.component';
 import { RepositoriesComponent } from './components/repositories/repositories.component';
 import { RepoDetailComponent } from './components/repo-detail/repo-detail.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { RepoDetailComponent } from './components/repo-detail/repo-detail.compon
     ProfileComponent,
     RepositoriesComponent,
     RepoDetailComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
