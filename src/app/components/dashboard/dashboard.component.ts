@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GithubService } from '../../services/github.service';
+import { UserInfo } from '../../../types';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +9,7 @@ import { GithubService } from '../../services/github.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  userInfo: any = null;
+  userInfo: UserInfo = null;
 
   constructor(private githubService: GithubService, private router: Router) {}
 

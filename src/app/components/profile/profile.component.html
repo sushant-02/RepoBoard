@@ -1,4 +1,4 @@
-<div class="profile--container">
+<div *ngIf="user" class="profile--container">
   <div class="profile--container-inner">
     <figure class="image img--container">
       <img class="is-rounded img" [src]="user.avatar_url" />

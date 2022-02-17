@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { UserInfo } from '../../types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GithubService {
-  userInfo = null;
+  userInfo: UserInfo = null;
   private baseURL = '/.netlify/functions';
 
   constructor(private http: HttpClient) {}
@@ -15,7 +16,7 @@ export class GithubService {
     return this.userInfo;
   }
 
-  setUserInfo(user: any) {
+  setUserInfo(user: UserInfo) {
     this.userInfo = user;
   }
 

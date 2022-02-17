@@ -5,6 +5,7 @@ import {
   faLink,
 } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { UserInfo } from '../../../types';
 
 @Component({
   selector: 'app-profile',
@@ -17,7 +18,7 @@ export class ProfileComponent implements OnInit {
   faTwitter = faTwitter;
   faLink = faLink;
 
-  @Input() user: any;
+  @Input() user!: UserInfo;
 
   constructor() {}
 
