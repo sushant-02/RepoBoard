@@ -1,4 +1,16 @@
 const axios = require("axios");
+const parse = require("parse-link-header");
+
+const getPageDetails = (linkHeader) => {
+  const pageDetails = {
+    next: null,
+    prev: null,
+    first: null,
+    last: null,
+  };
+
+  return { ...pageDetails, ...parse(linkHeader) };
+};
 
 exports.handler = async (event, context) => {
   const { username, direction, per_page, page } = JSON.parse(event.body);
@@ -21,9 +33,12 @@ exports.handler = async (event, context) => {
       params,
       ...config,
     });
+
+    const pageDetails = getPageDetails(String(res.headers.link));
+
     return {
       statusCode: 200,
-      body: JSON.stringify({ data: res.data }),
+      body: JSON.stringify({ data: res.data, ...pageDetails }),
     };
   }
 

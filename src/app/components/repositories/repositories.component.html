@@ -1,8 +1,9 @@
-<div class="repositories--container">
-  <div class="columns">
+<div class="repositories--container pb-4">
+  <form class="columns" (ngSubmit)="onSearchSubmit()">
     <div class="field column has-addons is-flex">
       <div class="control has-icons-left is-flex-grow-1">
         <input
+          name="searchTerm"
           [ngModel]="searchTerm"
           (ngModelChange)="onSearchTermChange($event)"
           class="input"
@@ -35,7 +36,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </form>
 
   <!-- Show loader while fetching repos -->
   <div *ngIf="isReposLoading" class="columns is-multiline is-desktop">
@@ -76,4 +77,12 @@
       <h3 class="has-color-grey">No public repositories to show</h3>
     </div>
   </div>
+
+  <!-- Display pagination when displaying repos -->
+  <app-pagination
+    *ngIf="!isReposLoading && repos.length"
+    [pageDetails]="pageDetails"
+    [currPage]="currPage"
+    (onCurrentPageChange)="onCurrentPageChange($event)"
+  ></app-pagination>
 </div>

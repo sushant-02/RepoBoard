@@ -1,0 +1,57 @@
+<div>
+  <nav class="pagination is-small is-centered">
+    <button
+      class="pagination-previous"
+      (click)="changePage('prev')"
+      [disabled]="pageDetails.first === null"
+    >
+      Previous
+    </button>
+    <button
+      class="pagination-next"
+      (click)="changePage('next')"
+      [disabled]="pageDetails.last === null"
+    >
+      Next page
+    </button>
+    <ul class="pagination-list">
+      <li *ngIf="pageDetails.first !== null">
+        <button class="pagination-link" (click)="changePage('first')">
+          {{ pageDetails.first.page }}
+        </button>
+      </li>
+
+      <li *ngIf="pageDetails.first !== null">
+        <span class="pagination-ellipsis">&hellip;</span>
+      </li>
+
+      <li *ngIf="pageDetails.prev !== null">
+        <button class="pagination-link" (click)="changePage('prev')">
+          {{ pageDetails.prev.page }}
+        </button>
+      </li>
+
+      <li>
+        <a class="pagination-link is-current">
+          {{ currPage }}
+        </a>
+      </li>
+
+      <li *ngIf="pageDetails.next !== null">
+        <button class="pagination-link" (click)="changePage('next')">
+          {{ pageDetails.next.page }}
+        </button>
+      </li>
+
+      <li *ngIf="pageDetails.last !== null">
+        <span class="pagination-ellipsis">&hellip;</span>
+      </li>
+
+      <li *ngIf="pageDetails.last !== null">
+        <button class="pagination-link" (click)="changePage('last')">
+          {{ pageDetails.last.page }}
+        </button>
+      </li>
+    </ul>
+  </nav>
+</div>

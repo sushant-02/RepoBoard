@@ -15,6 +15,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RepositoriesComponent } from './components/repositories/repositories.component';
 import { RepoDetailComponent } from './components/repo-detail/repo-detail.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     RepositoriesComponent,
     RepoDetailComponent,
     LoaderComponent,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,

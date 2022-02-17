@@ -36,12 +36,16 @@ export class GithubService {
     per_page: number,
     page: number
   ): Observable<any> {
-    const res = this.http.post(`${this.baseURL}/getRepos`, {
-      username,
-      direction,
-      per_page,
-      page,
-    });
+    const res = this.http.post(
+      `${this.baseURL}/getRepos`,
+      {
+        username,
+        direction,
+        per_page,
+        page,
+      },
+      { observe: 'response' }
+    );
     return res;
   }
 

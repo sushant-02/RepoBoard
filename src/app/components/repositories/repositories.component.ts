@@ -15,6 +15,8 @@ export class RepositoriesComponent implements OnInit {
   perPage: number = 10;
   loaderArray: number[] = [0, 1, 2, 3, 4, 5];
   isReposLoading: boolean = true;
+  pageDetails: object = {};
+  currPage: number = 1;
   faSearch = faSearch;
 
   constructor(private githubService: GithubService) {}
@@ -25,17 +27,12 @@ export class RepositoriesComponent implements OnInit {
 
   getRepos() {
     this.githubService
-      .getAllRepos(this.username, 'desc', this.perPage, 1)
-      .subscribe((repos) => {
-        this.repos = repos.data;
+      .getAllRepos(this.username, 'desc', this.perPage, this.currPage)
+      .subscribe(({ body: { data, ...pageDetails } }) => {
+        this.repos = data;
+        this.pageDetails = pageDetails;
         this.isReposLoading = false;
       });
-  }
-
-  onPerPageChange(value: number) {
-    this.isReposLoading = true;
-    this.perPage = value;
-    this.getRepos();
   }
 
   onSearchTermChange(term: string) {
@@ -45,6 +42,21 @@ export class RepositoriesComponent implements OnInit {
       return;
     }
     this.searchTerm = term;
+  }
+
+  onPerPageChange(value: number) {
+    this.isReposLoading = true;
+    this.perPage = value;
+    this.currPage = 1;
+    this.searchTerm = '';
+    this.getRepos();
+  }
+
+  onCurrentPageChange(newPage: number) {
+    this.isReposLoading = true;
+    this.currPage = newPage;
+    this.searchTerm = '';
+    this.getRepos();
   }
 
   onSearchSubmit() {
