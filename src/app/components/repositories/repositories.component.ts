@@ -28,7 +28,7 @@ export class RepositoriesComponent implements OnInit {
   getRepos() {
     this.githubService
       .getAllRepos(this.username, 'desc', this.perPage, this.currPage)
-      .subscribe(({ body: { data, ...pageDetails } }) => {
+      .subscribe(({ data, ...pageDetails }) => {
         this.repos = data;
         this.pageDetails = pageDetails;
         this.isReposLoading = false;

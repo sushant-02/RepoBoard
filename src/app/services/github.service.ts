@@ -7,7 +7,7 @@ import { UserInfo } from '../../types';
   providedIn: 'root',
 })
 export class GithubService {
-  userInfo: UserInfo = null;
+  userInfo: UserInfo | null = null;
   private baseURL = '/.netlify/functions';
 
   constructor(private http: HttpClient) {}
@@ -16,7 +16,7 @@ export class GithubService {
     return this.userInfo;
   }
 
-  setUserInfo(user: UserInfo) {
+  setUserInfo(user: UserInfo | null) {
     this.userInfo = user;
   }
 
@@ -37,16 +37,13 @@ export class GithubService {
     per_page: number,
     page: number
   ): Observable<any> {
-    const res = this.http.post(
-      `${this.baseURL}/getRepos`,
-      {
-        username,
-        direction,
-        per_page,
-        page,
-      },
-      { observe: 'response' }
-    );
+    const res = this.http.post(`${this.baseURL}/getRepos`, {
+      username,
+      direction,
+      per_page,
+      page,
+    });
+
     return res;
   }
 

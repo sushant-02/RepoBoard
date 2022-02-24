@@ -9,7 +9,7 @@ import { UserInfo } from '../../../types';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  userInfo: UserInfo = null;
+  userInfo: UserInfo | null = null;
 
   constructor(private githubService: GithubService, private router: Router) {}
 

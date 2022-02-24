@@ -6,7 +6,7 @@ export interface Repos {
   languages_url: string;
 }
 
-export type UserInfo = null | {
+export interface UserInfo {
   avatar_url: string;
   name: string;
   login: string;
@@ -16,4 +16,4 @@ export type UserInfo = null | {
   following: number;
   location?: string;
   twitter_username?: string;
-};
+}
